@@ -1,12 +1,19 @@
+# Tobin Tojo
+# January 3, 2022
+# Program is a calculator created in Python that performs functions that the user inputs
+
 import tkinter as tk
 
 calculation = ""
+
+# Function outputs user inputs to the textbox 
 def add_to_calculation(symbol):
   global calculation
   calculation += str(symbol)
   text_result.delete(1.0, "end")
   text_result.insert(1.0, calculation)
 
+# Function calculates expressions inputted by the user 
 def evaluate():
   global calculation
   try:
@@ -17,6 +24,7 @@ def evaluate():
     clear_field()
     text_result.insert(1.0, "Error")
 
+# Function clears the expression inputted by the user
 def clear_field():
   global calculation
   calculation = ""
@@ -24,9 +32,12 @@ def clear_field():
   
 root = tk.Tk()
 root.geometry("360x275")
+
+# Textbox
 text_result = tk.Text(root, height=2, width=16, font=("Arial", 24))
 text_result.grid(columnspan=5)
 
+# Calculator buttons 
 btn_1 = tk.Button(root, text = "1", command=lambda: add_to_calculation(1), width = 5, font=("Arial", 14))
 btn_1.grid(row = 2, column = 1)
 btn_2 = tk.Button(root, text = "2", command=lambda: add_to_calculation(2), width = 5, font=("Arial", 14))
@@ -63,6 +74,7 @@ btn_equals = tk.Button(root, text = "=", command=evaluate, width = 11, font=("Ar
 btn_equals.grid(row = 6, column = 3, columnspan = 2)
 btn_clear = tk.Button(root, text = "C", command=clear_field, width = 11, font=("Arial", 14))
 btn_clear.grid(row = 6, column = 1, columnspan = 2)
+
 root.mainloop()
                       
   
